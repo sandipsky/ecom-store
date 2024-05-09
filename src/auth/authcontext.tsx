@@ -6,8 +6,9 @@ import axios from "axios";
 import { User } from "../models/user";
 import { handleError } from "../helpers/errorhandler";
 
-type UserContextType = {
+type AuthContextType = {
     token: string | null;
+    user: User | null;
     registerUser: (formData: User) => void;
     loginUser: (formData: User) => void;
     logout: () => void;
@@ -17,19 +18,20 @@ type UserContextType = {
 type Props = { children: React.ReactNode };
 
 const api = "your_api_base_url_here/";
-const UserContext = createContext<UserContextType>({} as UserContextType);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
-export const UserProvider = ({ children }: Props) => {
+export const AuthProvider = ({ children }: Props) => {
     const navigate = useNavigate();
     const [token, setToken] = useState<string | null>(null);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        const userToken = localStorage.getItem("token");
-        if (userToken) {
-            setToken(userToken);
-            axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+        setToken(localStorage.getItem("token"))
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
         }
-    }, []);
+    }, [])
 
     const registerUser = async (formData: User) => {
         try {
@@ -54,46 +56,46 @@ export const UserProvider = ({ children }: Props) => {
         // } catch (error) {
         //     handleError(error);
         // }
-
-        localStorage.setItem("token", "asdfsdafvsadv234vgferv");
-        setToken("asdfsdafvsadv234vgferv");
+        localStorage.setItem("token", "asdfsaf");
+        localStorage.setItem("user", JSON.stringify({ username: "sandip", email: "sandipshakya75@gmail.com" }));
+        setToken("asdfsaf");
+        setUser({ username: "sandip", email: "sandipshakya75@gmail.com" });
         toast.success("Login Success!");
         navigate("/");
     };
 
     const handleAuthResponse = (data: any) => {
         if (data) {
-            localStorage.setItem("token", data?.data.token);
             const userObj = {
-                userName: data?.data.userName,
-                email: data?.data.email,
+                userName: data?.username,
+                email: data?.email,
             };
+            localStorage.setItem("token", data?.data.token);
             localStorage.setItem("user", JSON.stringify(userObj));
-            setToken(data?.data.token!);
+            setToken(data?.token!);
             toast.success("Login Success!");
-            navigate("/search");
+            navigate("/");
         }
     };
 
     const isLoggedIn = () => {
-        console.log(token)
-        return token != null;
+        const userToken = localStorage.getItem("token");
+        return userToken != null;
     };
 
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         setToken("");
-        navigate("/");
+        navigate("/login");
     };
 
     return (
-        <UserContext.Provider
-            value={{ loginUser, token, logout, isLoggedIn, registerUser }}
-        >
+        <AuthContext.Provider
+            value={{ loginUser, token, user, logout, isLoggedIn, registerUser }}>
             <>{children}</>
-        </UserContext.Provider>
+        </AuthContext.Provider>
     );
 };
 
-export const useAuth = () => React.useContext(UserContext);
+export const useAuth = () => React.useContext(AuthContext);

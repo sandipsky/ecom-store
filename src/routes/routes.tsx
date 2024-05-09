@@ -5,12 +5,12 @@ import Layout from "../pages/layout/layout";
 import Products from "../pages/products/products";
 import Register from "../pages/register/register";
 import ProtectedRoute from "./protectedroute";
-import { UserProvider } from "../auth/authcontext";
+import { AuthProvider } from "../auth/authcontext";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <UserProvider><Layout /></UserProvider>,
+        element: <AuthProvider><Layout /></AuthProvider>,
         children: [
             { path: "", element: <Home /> },
             {
@@ -25,10 +25,10 @@ export const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <UserProvider><Login /></UserProvider>
+        element: <AuthProvider><Login /></AuthProvider>
     },
     {
         path: "/register",
-        element: <UserProvider><Register /></UserProvider>
+        element: <AuthProvider><Register /></AuthProvider>
     },
 ]);

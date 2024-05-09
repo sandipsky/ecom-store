@@ -7,7 +7,20 @@ export default function Register() {
   if (isLoggedIn()) {
     return <Navigate to="/" />;
   }
+
+  function handleRegister() {
+    const user = {
+      username: "sandip",
+      password: "asd"
+    }
+    registerUser(user);
+  }
+
   return (
-    <div>Register</div>
+    <>
+      <div>Register</div>
+      <button onClick={() => handleRegister()}>Login Now</button>
+    </>
+
   )
 }
