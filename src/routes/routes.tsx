@@ -6,6 +6,7 @@ import Products from "../pages/products/products";
 import Register from "../pages/register/register";
 import ProtectedRoute from "./protectedroute";
 import { AuthProvider } from "../auth/authcontext";
+import Cart from "../components/cart/cart";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
                     </ProtectedRoute>
                 )
             },
+            { path: "/cart", element: <Cart /> },
         ],
     },
     {
