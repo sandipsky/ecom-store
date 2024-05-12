@@ -1,8 +1,8 @@
 // components/Cart.js
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, decreaseQty, removeItem, clearCart } from '../../store/slice/cartslice';
-import { RootState } from '../../store/store';
 import { CartItem } from '../../models/cart';
+import { RootState } from '../../store/store';
 
 const Cart = () => {
     const items = useSelector((state: RootState) => state.cartReducer.cartItems);
