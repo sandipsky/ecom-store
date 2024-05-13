@@ -4,7 +4,7 @@ import { addItem, decreaseQty, removeItem, clearCart } from '../../store/slice/c
 import { CartItem } from '../../models/cart';
 import { RootState } from '../../store/store';
 
-const Cart = () => {
+export default function Cart() {
     const items = useSelector((state: RootState) => state.cartReducer.cartItems);
     const dispatch = useDispatch();
 
@@ -49,4 +49,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+

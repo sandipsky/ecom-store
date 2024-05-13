@@ -11,8 +11,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between px-[60px] py-[12px]">
-        <h1 className="font-[700] text-[28px]">Estore</h1>
+      <header className="flex items-center justify-between px-[80px] py-[12px]">
+        <h1 className="font-[900] text-[28px]">Estore</h1>
         <ul className="flex items-center gap-[16px]" id="navbar">
           <li>
             <NavLink className={({ isActive }) => (isActive ? 'active-link' : 'link')} to="/">Home</NavLink>

@@ -1,383 +1,141 @@
-
+import ProductCard from "../../components/productcard/productcard";
+import { Products } from "../../data/products"
+import { Product } from "../../models/product";
 
 export default function Home() {
 
+    const featuredProducts: Product[] = Products.filter(item => item.isFeatured == true);
+    const newProducts: Product[] = Products.filter(item => item.isFeatured == false);
 
-  return (
-    <>
-      <section id="hero">
-            <h4>Trade-in-offer</h4>
-            <h2>Super value deals</h2>
-            <h1>On all products</h1>
-            <p>Save more with coupons & upto 70% off! </p>
-            <button>Shop Now</button>
-        </section>
+    const features = [
+        {
+            image: "img/features/f1.png",
+            name: "Free Shipping",
+        },
+        {
+            image: "img/features/f2.png",
+            name: "Online Order",
+        },
+        {
+            image: "img/features/f3.png",
+            name: "Save Money",
+        },
+        {
+            image: "img/features/f4.png",
+            name: "Promotions",
+        },
+        {
+            image: "img/features/f5.png",
+            name: "Happy Sell",
+        },
+        {
+            image: "img/features/f6.png",
+            name: "Support",
+        }
+    ];
 
-        <section id="feature" className="section-p1">
-            <div className="fe-box">
-                  <img src="img/features/f1.png" alt="" />
-                <h6>Free Shipping</h6>
-            </div>
-            <div className="fe-box">
-                <img src="img/features/f2.png" alt=""/>
-                <h6>Online Order</h6>
-            </div>
-            <div className="fe-box">
-                <img src="img/features/f3.png" alt=""/>
-                <h6>Save Money</h6>
-            </div>
-            <div className="fe-box">
-                <img src="img/features/f4.png" alt=""/>
-                <h6>Promotions</h6>
-            </div>
-            <div className="fe-box">
-                <img src="img/features/f5.png" alt=""/>
-                <h6>Happy Sell</h6>
-            </div>
-            <div className="fe-box">
-                <img src="img/features/f6.png" alt=""/>
-                <h6>Support</h6>
-            </div>
-          
-        </section>
+    return (
+        <>
+            {/* hero section  */}
+            <section className="h-[90vh] w-full px-[80px] flex justify-center flex-col items-start bg-cyan-50">
+                <h4>Trade-in-offer</h4>
+                <h2>Super value deals</h2>
+                <h1>On all products</h1>
+                <p>Save more with coupons & upto 70% off! </p>
+                <button>Shop Now</button>
+            </section>
+            {/* hero section  */}
 
-        <section id="product1" className="section-p1">
-            <h2>Featured Products</h2>
-            <p>Summer Collection new Modern Design</p>
-            <div className="pro-container">
-                <div className="pro">
-                    <img src="img/products/f1.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
+            {/* features  */}
+            <section className="flex flex-wrap items-center justify-between px-[80px] py-[40px]">
+                {features.map((feature, index) => (
+                    <div key={index} className="w-[180px] text-center px-[15px] py-[25px] my-[15px]">
+                        <img className="w-full mb-[10px]" src={feature.image} alt={feature.name} />
+                        <h6 className="bg-[#fddde4] rounded-[4px] text-[#088178] px-[8px] py-[9px]">{feature.name}</h6>
                     </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+                ))}
+            </section>
+            {/* features */}
+
+            {/* featured product */}
+            <section id="product1" className="section-p1">
+                <h2>Featured Products</h2>
+                <p>Summer Collection new Modern Design</p>
+                <div className="pro-container">
+                    {featuredProducts.map((product: Product, index: number) => (
+                        <ProductCard key={index} product={product} />
+                    ))}
                 </div>
-                <div className="pro">
-                    <img src="img/products/f2.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
+            </section>
+            {/* featured product */}
 
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+
+            {/* banner */}
+            <section id="banner" className="section-m1 ">
+                <h4>Repair Service</h4>
+                <h2>Up to <span>70% off</span> - All t-Shirts & Accesories</h2>
+                <button className="normal">Explore More</button>
+            </section>
+            {/* banner */}
+
+            {/* new arrivals */}
+            <section id="product1" className="section-p1">
+                <h2>New Arrivals</h2>
+                <p>Summer Collection new Modern Design</p>
+                <div className="pro-container">
+                    {newProducts.map((product: Product, index: number) => (
+                        <ProductCard key={index} product={product} />
+                    ))}
                 </div>
-                <div className="pro">
-                    <img src="img/products/f3.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
+            </section>
+            {/* new arrivals */}
 
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+            {/* banners */}
+            <section id="sm-banner" className="section-p1">
+                <div className="banner-box">
+                    <h4>crazy deals</h4>
+                    <h2>buy 1 get 1 free</h2>
+                    <span>The best classNameic dress is on sale at cara</span>
+                    <button className="white">Learn More</button>
                 </div>
-                <div className="pro">
-                    <img src="img/products/f4.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+                <div className="banner-box banner-box2">
+                    <h4>spring/summer</h4>
+                    <h2>upcoming season</h2>
+                    <span>The best classNameic dress is on sale at cara</span>
+                    <button className="white">Collections</button>
                 </div>
-                <div className="pro">
-                    <img src="img/products/f5.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
+            </section>
 
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+            <section id="banner3">
+                <div className="banner-box">
+                    <h2>SEASON SALE</h2>
+                    <h3>Winter Collection -50% OFF</h3>
                 </div>
-                <div className="pro">
-                    <img src="img/products/f6.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+                <div className="banner-box banner-box2">
+                    <h2>NEW FOOTWEAR COLLECTION</h2>
+                    <h3>Spring/Summer 2022</h3>
                 </div>
-                <div className="pro">
-                    <img src="img/products/f7.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+                <div className="banner-box banner-box3">
+                    <h2>T-SHIRTS</h2>
+                    <h3>New Trendy Prints</h3>
                 </div>
-                <div className="pro">
-                    <img src="img/products/f8.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
+            </section>
+            {/* banners */}
 
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+            {/* newsletter */}
+            <section id="newsletter" className="section-p1 section-m1 ">
+                <div className="newstext">
+                    <h4>Sign Up For Newsletters</h4>
+                    <p>Get E-mail updates about our latest shop and <span>special offers.</span>
+                    </p>
                 </div>
-            </div>
-
-        </section>
-
-        <section id="banner" className="section-m1 ">
-            <h4>Repair Service</h4>
-            <h2>Up to <span>70% off</span> - All t-Shirts & Accesories</h2>
-            <button className="normal">Explore More</button>
-
-        </section>
-
-        <section id="product1" className="section-p1">
-            <h2>New Arrivals</h2>
-            <p>Summer Collection new Modern Design</p>
-            <div className="pro-container">
-                <div className="pro">
-                    <img src="img/products/n1.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
+                <div className="form">
+                    <input type="text" placeholder="Your email address" />
+                    <button className="normal">Sign Up</button>
                 </div>
-                <div className="pro">
-                    <img src="img/products/n2.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
+            </section>
+            {/* newsletter */}
+        </>
 
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n3.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n4.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n5.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n6.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n7.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-                <div className="pro">
-                    <img src="img/products/n8.jpg" alt=""/>
-                    <div className="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-shirt</h5>
-                        <div className="star">
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-                            <i className="fas fa-star"></i>
-
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#" className="cart"><i className="fa fal fa-shopping-cart"></i></a>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="sm-banner" className="section-p1">
-            <div className="banner-box">
-                <h4>crazy deals</h4>
-                <h2>buy 1 get 1 free</h2>
-                <span>The best classNameic dress is on sale at cara</span>
-                <button className="white">Learn More</button>
-            </div>
-            <div className="banner-box banner-box2">
-                <h4>spring/summer</h4>
-                <h2>upcoming season</h2>
-                <span>The best classNameic dress is on sale at cara</span>
-                <button className="white">Collections</button>
-            </div>
-        </section>
-
-        <section id="banner3">
-            <div className="banner-box">
-                <h2>SEASON SALE</h2>
-                <h3>Winter Collection -50% OFF</h3>
-            </div>
-            <div className="banner-box banner-box2">
-                <h2>NEW FOOTWEAR COLLECTION</h2>
-                <h3>Spring/Summer 2022</h3>
-            </div>
-            <div className="banner-box banner-box3">
-                <h2>T-SHIRTS</h2>
-                <h3>New Trendy Prints</h3>
-            </div>
-        </section>
-
-        <section id="newsletter" className="section-p1 section-m1 ">
-            <div className="newstext">
-                <h4>Sign Up For Newsletters</h4>
-                <p>Get E-mail updates about our latest shop and <span>special offers.</span> 
-                </p>
-            </div>
-            <div className="form">
-                <input type="text" placeholder="Your email address"/>
-                <button className="normal">Sign Up</button>
-            </div>
-        </section>
-    </>
-
-  )
+    )
 }

@@ -1,10 +1,11 @@
+import './footer.scss'
+
 export default function Footer() {
   return (
     <>
-      <footer>
-        <div className="col">
-          <h1> EStore </h1>
-          <h4>Contact</h4>
+      <footer className="flex justify-between flex-wrap px-[80px]">
+        <div className="flex flex-col items-start">
+          <h1 className='font-[700]'> EStore </h1>
           <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
           <p><strong>Phone:</strong> +01 2222 365/(+91) 01 2345 6789</p>
           <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
@@ -31,15 +32,6 @@ export default function Footer() {
 
         </div>
 
-        <div className="col">
-          <h4>About</h4>
-          <a href="#">Account</a>
-          <a href="#">Sign In</a>
-          <a href="#">View Cart</a>
-          <a href="#">My Wishlist</a>
-          <a href="#">Track My Order</a>
-          <a href="#">Help</a>
-        </div>
 
         <div className="col install">
           <h4>Install App</h4>
@@ -53,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="copyright">
-          <p>© 2023, Tech2 etc - HTML CSS Ecommerce Template</p>
+          <p>© 2024, Sandip Shakya - EStore</p>
         </div>
       </footer>
     </>
