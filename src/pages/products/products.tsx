@@ -1,12 +1,16 @@
 import { toast } from "react-toastify";
 import { addItem } from "../../store/slice/cartslice";
 import { useDispatch } from "react-redux";
+import { ProductsData } from "../../data/products"
+import { Product } from "../../models/product";
+import ProductCard from "../../components/productcard/productcard";
 
 export default function Products() {
 
   const dispatch = useDispatch();
 
-  const products = [{ id: 1, name: "amlod", price: 300 }, { id: 2, name: "toothbrush", price: 500 },]
+  const products: Product[] = ProductsData.filter(item => item.isFeatured == true);
+
 
   function onAddToCart(item: any) {
     dispatch(addItem(item));
@@ -15,16 +19,25 @@ export default function Products() {
 
   return (
     <>
-      <div>product</div>
 
-      {products.map((item: any) => (
-        <li key={item.id}>
-          {item.name} ${item.price}
-          <button onClick={() => onAddToCart(item)}>Add to Cart</button>
-        </li>
-      ))}
+    <div className="flex">
+      <div className="flex flex-col w-1/3">
+        <h3>Filter By</h3>
+      </div>
+
+    <section id="product1" className="section-p1 w-2/3">
+        <div className="pro-container">
+          {products.map((product: Product, index: number) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </section>
+
+    </div>
 
       
+
+
     </>
   )
 }

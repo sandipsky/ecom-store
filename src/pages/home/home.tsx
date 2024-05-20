@@ -1,11 +1,11 @@
 import ProductCard from "../../components/productcard/productcard";
-import { Products } from "../../data/products"
+import { ProductsData } from "../../data/products"
 import { Product } from "../../models/product";
 
 export default function Home() {
 
-    const featuredProducts: Product[] = Products.filter(item => item.isFeatured == true);
-    const newProducts: Product[] = Products.filter(item => item.isFeatured == false);
+    const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true);
+    const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false);
 
     const features = [
         {
@@ -37,12 +37,16 @@ export default function Home() {
     return (
         <>
             {/* hero section  */}
-            <section className="h-[90vh] w-full px-[80px] flex justify-center flex-col items-start bg-cyan-50">
-                <h4>Trade-in-offer</h4>
-                <h2>Super value deals</h2>
-                <h1>On all products</h1>
-                <p>Save more with coupons & upto 70% off! </p>
-                <button>Shop Now</button>
+            <section className="h-[90vh] w-full px-[80px] flex  bg-cyan-50">
+                <div className="flex justify-center flex-col items-start">
+                    <h4>Trade-in-offer</h4>
+                    <h2>Super value deals</h2>
+                    <h1>On all products</h1>
+                    <p>Save more with coupons & upto 70% off! </p>
+                    <button>Shop Now</button>
+                </div>
+
+               
             </section>
             {/* hero section  */}
 
