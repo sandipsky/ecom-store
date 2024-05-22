@@ -1,24 +1,24 @@
-
-import { ProductsData } from "../../data/products"
+import { ProductsData } from "../../data/products";
 import { Product } from "../../models/product";
 import ProductCard from "../../components/productcard/productcard";
 import { useState } from "react";
+import ReactSlider from "react-slider";
+import './products.scss';
 
 export default function Products() {
-  const products: Product[] = ProductsData.filter(item => item.isFeatured == true);
+  const products: Product[] = ProductsData.filter(item => item.isFeatured === true);
   const brands = [...new Set(ProductsData.map(product => product.brand))];
   const categories = [...new Set(ProductsData.map(product => product.category))];
 
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(500); // Adjust this based on your product price range
+  const [priceRange, setPriceRange] = useState([0, 5000]); // Adjust this based on your product price range
 
-  const handleMinPriceChange = (event: any) => {
-    setMinPrice(event.target.value);
+  const handleSliderChange = (newValues: number[]) => {
+    setPriceRange(newValues);
   };
 
-  const handleMaxPriceChange = (event: any) => {
-    setMaxPrice(event.target.value);
-  };
+  const filteredProducts = products.filter(product => 
+    product.price >= priceRange[0] && product.price <= priceRange[1]
+  );
 
   return (
     <>
@@ -27,20 +27,18 @@ export default function Products() {
           <h3>Filter By</h3>
 
           <h2>Brand</h2>
-
-          {brands.map((brand: any, index: number) => (
-            <div className="flex">
+          {brands.map((brand, index) => (
+            <div className="flex" key={index}>
               <input type="checkbox" />
-              <h3 key={index}>{brand}</h3>
+              <h3>{brand}</h3>
             </div>
           ))}
 
           <h2>Category</h2>
-
-          {categories.map((category: any, index: number) => (
-            <div className="flex">
+          {categories.map((category, index) => (
+            <div className="flex" key={index}>
               <input type="checkbox" />
-              <h3 key={index}>{category}</h3>
+              <h3>{category}</h3>
             </div>
           ))}
 
@@ -50,42 +48,36 @@ export default function Products() {
               <span>Min:</span>
               <input
                 type="number"
-                value={minPrice}
-                onChange={handleMinPriceChange}
+                value={priceRange[0]}
+                onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
                 className="ml-2 w-20"
                 min="0"
-                max={maxPrice}
+                max={priceRange[1]}
               />
             </div>
             <div className="flex items-center mt-2">
               <span>Max:</span>
               <input
                 type="number"
-                value={maxPrice}
-                onChange={handleMaxPriceChange}
+                value={priceRange[1]}
+                onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                 className="ml-2 w-20"
-                min={minPrice}
-                max="500" // Adjust this based on your product price range
+                min={priceRange[0]}
+                max="500"
               />
             </div>
-            <input
-              type="range"
-              min="0"
-              max="500"
-              value={minPrice}
-              onChange={handleMinPriceChange}
-              className="mt-2"
-            />
-            <input
-              type="range"
-              min="0"
-              max="500"
-              value={maxPrice}
-              onChange={handleMaxPriceChange}
-              className="mt-2"
+            <ReactSlider
+              className="horizontal-slider"
+              thumbClassName="thumb"
+              trackClassName="track"
+              value={priceRange}
+              onChange={handleSliderChange}
+              pearling
+              minDistance={10}
+              min={0}
+              max={5000}
             />
           </div>
-
         </div>
 
         <div className="w-2/3 flex flex-col">
@@ -103,17 +95,13 @@ export default function Products() {
           </div>
           <section id="product1" className="section-p1">
             <div className="pro-container">
-              {products.map((product: Product, index: number) => (
+              {filteredProducts.map((product, index) => (
                 <ProductCard key={index} product={product} />
               ))}
             </div>
           </section>
         </div>
-
-
-
       </div>
-
     </>
-  )
+  );
 }

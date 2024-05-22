@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addItem, decreaseQty, removeItem, clearCart } from '../../store/slice/cartslice';
 import { CartItem } from '../../models/cart';
 import { RootState } from '../../store/store';
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface CartProps {
     cartOpen: boolean;
@@ -13,8 +13,7 @@ interface CartProps {
 export default function Cart(props: CartProps) {
     const items = useSelector((state: RootState) => state.cartReducer.cartItems);
     const dispatch = useDispatch();
-
-    const [show, setShow] = useState(props.cartOpen);
+    const cartRef = useRef<HTMLDivElement>(null);
 
     const handleIncrease = (item: CartItem) => {
         dispatch(addItem(item));
@@ -33,6 +32,24 @@ export default function Cart(props: CartProps) {
     };
 
     const totalPrice = items.reduce((total: number, item: CartItem) => total + item.quantity * item.price, 0);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+                props.toggleCart(false);
+            }
+        };
+
+        if (props.cartOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [props.cartOpen, props.toggleCart]);
 
     return (
         <div className={`h-[100%] fixed right-0 z-[10] top-0 bg-gray-200 transition-all duration-300 ${props.cartOpen == true ? 'w-[500px]' : 'w-[0px]'}`}>

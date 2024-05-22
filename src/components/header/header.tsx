@@ -57,6 +57,7 @@ export default function Header() {
         </ul>
 
         <Cart cartOpen={cartOpen} toggleCart={setCartOpen} />
+        <div onClick={() => setCartOpen(false)} className={`h-[100%] w-[100%] fixed top-0 left-0 bg-black transition-all duration-300 ${cartOpen == false ? 'hidden opacity-[0%] z-[-10]' : 'block opacity-[50%] z-[5]'}`}></div>
 
       </header>
     </>
