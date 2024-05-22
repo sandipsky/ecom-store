@@ -3,10 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addItem, decreaseQty, removeItem, clearCart } from '../../store/slice/cartslice';
 import { CartItem } from '../../models/cart';
 import { RootState } from '../../store/store';
+import { useState } from 'react';
 
-export default function Cart() {
+interface CartProps {
+    cartOpen: boolean;
+    toggleCart: any
+}
+
+export default function Cart(props: CartProps) {
     const items = useSelector((state: RootState) => state.cartReducer.cartItems);
     const dispatch = useDispatch();
+
+    const [show, setShow] = useState(props.cartOpen);
 
     const handleIncrease = (item: CartItem) => {
         dispatch(addItem(item));
@@ -27,7 +35,8 @@ export default function Cart() {
     const totalPrice = items.reduce((total: number, item: CartItem) => total + item.quantity * item.price, 0);
 
     return (
-        <div>
+        <div className={`h-[100%] fixed right-0 z-[10] top-0 bg-gray-200 transition-all duration-300 ${props.cartOpen == true ? 'w-[500px]' : 'w-[0px]'}`}>
+            <span onClick={() => props.toggleCart(false)}>Cross</span>
             <h2>Cart</h2>
             {items.length === 0 ? (
                 <p>Your cart is empty</p>

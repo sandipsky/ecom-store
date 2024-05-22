@@ -3,11 +3,15 @@ import { CartItem } from "../../models/cart";
 import { RootState } from "../../store/store";
 import { Link, NavLink } from "react-router-dom"
 import { useAuth } from "../../auth/authcontext";
+import { useState } from "react";
+import Cart from "../cart/cart";
 
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
   const cartCount = cartItems.reduce((total: number, item: CartItem) => total + item.quantity, 0);
   const { logout, user, isLoggedIn } = useAuth();
+
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <>
@@ -44,12 +48,16 @@ export default function Header() {
             </>
           )}
 
-          <li>
-            <Link to="/cart">
+          <li onClick={() => setCartOpen(true)}>
+            {/* <Link to="/cart">
               {cartCount} Cart
-            </Link>
+            </Link> */}
+            {cartCount} Cart
           </li>
         </ul>
+
+        <Cart cartOpen={cartOpen} toggleCart={setCartOpen} />
+
       </header>
     </>
 

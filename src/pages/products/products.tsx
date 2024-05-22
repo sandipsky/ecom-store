@@ -88,13 +88,29 @@ export default function Products() {
 
         </div>
 
-        <section id="product1" className="section-p1 w-2/3">
-          <div className="pro-container">
-            {products.map((product: Product, index: number) => (
-              <ProductCard key={index} product={product} />
-            ))}
+        <div className="w-2/3 flex flex-col">
+          <div className="flex">
+            <input className="w-2/3" type="text" placeholder="Search" />
+
+            <div className="flex w-1/3">
+              <label>Sort By:</label>
+              <select name="" id="">
+                <option selected disabled hidden value="">Select</option>
+                <option value="">Name</option>
+                <option value="">Price</option>
+              </select>
+            </div>
           </div>
-        </section>
+          <section id="product1" className="section-p1">
+            <div className="pro-container">
+              {products.map((product: Product, index: number) => (
+                <ProductCard key={index} product={product} />
+              ))}
+            </div>
+          </section>
+        </div>
+
+
 
       </div>
 
