@@ -32,8 +32,8 @@ export default function Header() {
                 <span>{user?.username}</span>
               </li>
 
-              <li>
-                <a onClick={() => logout()}>Logout</a>
+              <li onClick={() => logout()} className="cursor-pointer">
+                <a>Logout</a>
               </li>
             </>
           ) : (
@@ -48,11 +48,9 @@ export default function Header() {
             </>
           )}
 
-          <li onClick={() => setCartOpen(true)}>
-            {/* <Link to="/cart">
-              {cartCount} Cart
-            </Link> */}
-            {cartCount} Cart
+          <li className="flex items-center relative cursor-pointer" onClick={() => setCartOpen(true)}>
+            <div className="bg-red-400 rounded-full p-1 w-[18px] h-[18px] text-[14px] text-white absolute top-[-6px] right-[-6px] items-center flex justify-center">{cartCount}</div>
+            <i className="text-[26px] bx bx-cart-alt"></i>
           </li>
         </ul>
 

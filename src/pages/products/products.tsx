@@ -22,13 +22,13 @@ export default function Products() {
 
   return (
     <>
-      <div className="flex">
-        <div className="flex flex-col w-1/3">
+      <div className="flex min-h-[100vh]">
+        <div className="flex flex-col w-[30%] px-[80px] border-[1px] border-black">
           <h3>Filter By</h3>
 
           <h2>Brand</h2>
           {brands.map((brand, index) => (
-            <div className="flex" key={index}>
+            <div className="flex gap-[8px]" key={index}>
               <input type="checkbox" />
               <h3>{brand}</h3>
             </div>
@@ -36,7 +36,7 @@ export default function Products() {
 
           <h2>Category</h2>
           {categories.map((category, index) => (
-            <div className="flex" key={index}>
+            <div className="flex gap-[8px]" key={index}>
               <input type="checkbox" />
               <h3>{category}</h3>
             </div>
@@ -80,7 +80,7 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="w-2/3 flex flex-col">
+        <div className="w-[70%] flex flex-col border-[1px] border-black">
           <div className="flex">
             <input className="w-2/3" type="text" placeholder="Search" />
 
