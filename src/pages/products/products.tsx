@@ -58,11 +58,11 @@ export default function Products() {
 
   return (
     <>
-      <div className="flex min-h-[100vh]">
-        <div className="flex flex-col w-[30%] px-[80px] border-[1px] border-black">
-          <h3>Filter By</h3>
+      <div className="flex min-h-[100vh] my-[50px]">
+        <div className="flex flex-col w-[30%] px-[80px] gap-[8px]">
 
-          <h2>Brand</h2>
+
+          <h3 className="font-[800] text-[24px]">Brand</h3>
           {brands.map((brand, index) => (
             <div className="flex gap-[8px]" key={index}>
               <input type="checkbox" onChange={() => handleBrandChange(brand)} />
@@ -70,7 +70,7 @@ export default function Products() {
             </div>
           ))}
 
-          <h2>Category</h2>
+          <h3 className="font-[800] text-[24px]">Category</h3>
           {categories.map((category, index) => (
             <div className="flex gap-[8px]" key={index}>
               <input type="checkbox" onChange={() => handleCategoryChange(category)} />
@@ -78,7 +78,7 @@ export default function Products() {
             </div>
           ))}
 
-          <h2>Price Range</h2>
+          <h3 className="font-[800] text-[24px]">Price Range</h3>
           <div className="flex flex-col">
             <div className="flex items-center">
               <span>Min:</span>
@@ -116,7 +116,7 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="w-[70%] flex flex-col border-[1px] border-black">
+        <div className="w-[70%] flex flex-col">
           <div className="flex">
             <input
               className="w-2/3"
@@ -135,13 +135,13 @@ export default function Products() {
               </select>
             </div>
           </div>
-          <section id="product1" className="section-p1">
-            <div className="pro-container">
-              {filteredProducts.map((product, index) => (
-                <ProductCard key={index} product={product} />
-              ))}
-            </div>
-          </section>
+
+          <div className="flex flex-wrap gap-[12px]">
+            {filteredProducts.map((product, index) => (
+              <ProductCard key={index} product={product} />
+            ))}
+          </div>
+
         </div>
       </div>
     </>
