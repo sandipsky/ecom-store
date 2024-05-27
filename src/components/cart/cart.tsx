@@ -52,25 +52,56 @@ export default function Cart(props: CartProps) {
     }, [props.cartOpen, props.toggleCart]);
 
     return (
-        <div className={`h-[100%] fixed right-0 z-[10] top-0 bg-gray-200 transition-all duration-300 ${props.cartOpen == true ? 'w-[500px]' : 'w-[0px]'}`}>
-            <span onClick={() => props.toggleCart(false)}>Cross</span>
-            <h2>Cart</h2>
+        <div ref={cartRef} className={`fixed top-0 right-0 h-full z-50 bg-white shadow-lg transition-transform transform ${props.cartOpen ? 'translate-x-0' : 'translate-x-full'} w-[400px]`}>
+            <div className="flex items-center justify-between p-4 border-b">
+                <h2 className="text-lg font-semibold">Your Cart</h2>
+                <button onClick={() => props.toggleCart(false)} className="text-xl">
+                    <i className="bx bx-x"></i>
+
+                </button>
+            </div>
             {items.length === 0 ? (
-                <p>Your cart is empty</p>
+                <p className="p-4">Your cart is empty</p>
             ) : (
-                <ul>
+                <ul className="p-4 space-y-4 overflow-y-auto">
                     {items.map((item: CartItem) => (
-                        <li key={item.id}>
-                            Name: {item.name} - Price: ${item.price} Qty: ${item.quantity} Total: ${item.price * item.quantity}
-                            <button onClick={() => handleIncrease(item)}>Increase Qty</button>
-                            <button onClick={() => handleDecrease(item)}>Decrease Qty</button>
-                            <button onClick={() => handleRemoveItem(item)}>Remove</button>
+                        <li key={item.id} className="flex items-center justify-between border-b pb-4">
+                            <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                            <div className="flex-1 ml-4">
+                                <h3 className="font-semibold">{item.name}</h3>
+                                <p className="text-sm text-gray-500">Price: ${item.price}</p>
+                                <div className="flex items-center mt-2">
+                                    <button onClick={() => handleDecrease(item)} className="text-gray-500 hover:text-black mr-2">
+                                        <i className="bx bx-minus"></i>
+                                    </button>
+                                    <span>{item.quantity}</span>
+                                    <button onClick={() => handleIncrease(item)} className="text-gray-500 hover:text-black ml-2">
+                                        <i className="bx bx-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <p className="font-semibold">${item.price * item.quantity}</p>
+                                <button onClick={() => handleRemoveItem(item)} className="text-gray-500 hover:text-red-600">
+                                    <i className="bx bx-trash"></i>
+
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>
             )}
-            <p>Total: ${totalPrice}</p>
-            <button onClick={handleClearCart}>Clear Cart</button>
+            {items.length > 0 && (
+                <div className="p-4 border-t">
+                    <p className="flex justify-between font-semibold">
+                        <span>Total:</span>
+                        <span>${totalPrice}</span>
+                    </p>
+                    <button onClick={handleClearCart} className="w-full mt-4 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">
+                        Clear Cart
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

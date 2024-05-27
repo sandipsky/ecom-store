@@ -10,15 +10,51 @@ export default function Products() {
   const brands = [...new Set(ProductsData.map(product => product.brand))];
   const categories = [...new Set(ProductsData.map(product => product.category))];
 
-  const [priceRange, setPriceRange] = useState([0, 5000]); // Adjust this based on your product price range
+  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortOption, setSortOption] = useState<string>("");
 
   const handleSliderChange = (newValues: number[]) => {
     setPriceRange(newValues);
   };
 
-  const filteredProducts = products.filter(product => 
-    product.price >= priceRange[0] && product.price <= priceRange[1]
-  );
+  const handleBrandChange = (brand: string) => {
+    setSelectedBrands(prevSelected =>
+      prevSelected.includes(brand) ? prevSelected.filter(b => b !== brand) : [...prevSelected, brand]
+    );
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories(prevSelected =>
+      prevSelected.includes(category) ? prevSelected.filter(c => c !== category) : [...prevSelected, category]
+    );
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(event.target.value);
+  };
+
+  const filteredProducts = products
+    .filter(product =>
+      product.price >= priceRange[0] && product.price <= priceRange[1] &&
+      (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+      (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+      (searchQuery === "" || product.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
+    .sort((a, b) => {
+      if (sortOption === "name") {
+        return a.name.localeCompare(b.name);
+      } else if (sortOption === "price") {
+        return a.price - b.price;
+      }
+      return 0;
+    });
 
   return (
     <>
@@ -29,7 +65,7 @@ export default function Products() {
           <h2>Brand</h2>
           {brands.map((brand, index) => (
             <div className="flex gap-[8px]" key={index}>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={() => handleBrandChange(brand)} />
               <h3>{brand}</h3>
             </div>
           ))}
@@ -37,7 +73,7 @@ export default function Products() {
           <h2>Category</h2>
           {categories.map((category, index) => (
             <div className="flex gap-[8px]" key={index}>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={() => handleCategoryChange(category)} />
               <h3>{category}</h3>
             </div>
           ))}
@@ -63,7 +99,7 @@ export default function Products() {
                 onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                 className="ml-2 w-20"
                 min={priceRange[0]}
-                max="500"
+                max="5000"
               />
             </div>
             <ReactSlider
@@ -82,14 +118,20 @@ export default function Products() {
 
         <div className="w-[70%] flex flex-col border-[1px] border-black">
           <div className="flex">
-            <input className="w-2/3" type="text" placeholder="Search" />
+            <input
+              className="w-2/3"
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
 
             <div className="flex w-1/3">
               <label>Sort By:</label>
-              <select name="" id="">
+              <select name="" id="" onChange={handleSortChange}>
                 <option selected disabled hidden value="">Select</option>
-                <option value="">Name</option>
-                <option value="">Price</option>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
               </select>
             </div>
           </div>
