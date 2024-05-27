@@ -31,12 +31,14 @@ export default function ProductCard({ product }: ProductCardProps) {
                         <i className="fas fa-star"></i>
                         <i className="fas fa-star"></i>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <h4>${product.price}</h4>
-                        <button onClick={() => onAddToCart(product)} className="bg-[#fddde4] rounded-[4px] text-[#088178] p-[10px] text-[14px]"><i className="fa fal fa-shopping-cart"></i> Add to Cart</button>
-                    </div>
+                    <h4>${product.price}</h4>
                 </div>
             </Link>
+            <div className="flex items-center justify-between mt-2">
+                <button onClick={() => onAddToCart(product)} className="bg-[#fddde4] rounded-[4px] text-[#088178] p-[10px] text-[14px]">
+                    <i className="fa fal fa-shopping-cart"></i> Add to Cart
+                </button>
+            </div>
         </div>
-    )
+    );
 }
