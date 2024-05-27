@@ -6,7 +6,7 @@ import Products from "../pages/products/products";
 import Register from "../pages/register/register";
 import ProtectedRoute from "./protectedroute";
 import { AuthProvider } from "../auth/authcontext";
-import Cart from "../components/cart/cart";
+import ProductDetail from "../pages/products/product-detail/product-detail";
 
 export const router = createBrowserRouter([
     {
@@ -15,14 +15,17 @@ export const router = createBrowserRouter([
         children: [
             { path: "", element: <Home /> },
             {
-                path: "/products",
+                path: "products",
                 element: (
                     <ProtectedRoute>
                         <Products />
                     </ProtectedRoute>
                 )
             },
-            { path: "/cart", element: <Cart /> },
+            {
+                path: "product/:id", // Add this route for product details
+                element: <ProductDetail />
+            }
         ],
     },
     {
