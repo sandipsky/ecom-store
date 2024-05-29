@@ -6,7 +6,7 @@ import ReactSlider from "react-slider";
 import './products.scss';
 
 export default function Products() {
-  const products: Product[] = ProductsData.filter(item => item.isFeatured === true);
+  const products: Product[] = ProductsData;
   const brands = [...new Set(ProductsData.map(product => product.brand))];
   const categories = [...new Set(ProductsData.map(product => product.category))];
 
@@ -15,6 +15,9 @@ export default function Products() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortOption, setSortOption] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 9;
 
   const handleSliderChange = (newValues: number[]) => {
     setPriceRange(newValues);
@@ -56,12 +59,17 @@ export default function Products() {
       return 0;
     });
 
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const displayedProducts = filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <div className="flex min-h-[100vh] my-[50px]">
         <div className="flex flex-col w-[30%] px-[80px] gap-[8px]">
-
-
           <h3 className="font-[800] text-[24px]">Brand</h3>
           {brands.map((brand, index) => (
             <div className="flex gap-[8px]" key={index}>
@@ -137,11 +145,22 @@ export default function Products() {
           </div>
 
           <div className="flex flex-wrap gap-[12px]">
-            {filteredProducts.map((product, index) => (
+            {displayedProducts.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
           </div>
 
+          <div className="flex justify-center mt-4">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </>

@@ -6,7 +6,8 @@ export const ProductsData = [
         price: 220,
         brand: "Nike",
         isFeatured: true,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Comfortable and stylish Nike hoodie."
     },
     {
         id: "2",
@@ -15,7 +16,8 @@ export const ProductsData = [
         price: 180,
         brand: "Ray-Ban",
         isFeatured: true,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Classic Ray-Ban sunglasses for any occasion."
     },
     {
         id: "3",
@@ -24,7 +26,8 @@ export const ProductsData = [
         price: 130,
         brand: "North Face",
         isFeatured: true,
-        category: "Bags"
+        category: "Bags",
+        description: "Durable North Face backpack with ample storage."
     },
     {
         id: "4",
@@ -33,7 +36,8 @@ export const ProductsData = [
         price: 260,
         brand: "Nike",
         isFeatured: true,
-        category: "Clothing"
+        category: "Clothing",
+        description: "High-performance Nike shorts for active wear."
     },
     {
         id: "5",
@@ -42,7 +46,8 @@ export const ProductsData = [
         price: 170,
         brand: "Puma",
         isFeatured: true,
-        category: "Footwear"
+        category: "Footwear",
+        description: "Stylish Puma sneakers for everyday use."
     },
     {
         id: "6",
@@ -51,7 +56,8 @@ export const ProductsData = [
         price: 90,
         brand: "New Era",
         isFeatured: true,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Trendy New Era cap for a casual look."
     },
     {
         id: "7",
@@ -60,7 +66,8 @@ export const ProductsData = [
         price: 150,
         brand: "Casio",
         isFeatured: true,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Reliable Casio watch with a sleek design."
     },
     {
         id: "8",
@@ -69,7 +76,8 @@ export const ProductsData = [
         price: 280,
         brand: "North Face",
         isFeatured: true,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Warm and comfortable North Face jacket."
     },
     {
         id: "9",
@@ -78,7 +86,8 @@ export const ProductsData = [
         price: 200,
         brand: "Adidas",
         isFeatured: false,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Classic Adidas T-shirt for everyday wear."
     },
     {
         id: "10",
@@ -87,7 +96,8 @@ export const ProductsData = [
         price: 300,
         brand: "Levi's",
         isFeatured: false,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Stylish Levi's jeans with a perfect fit."
     },
     {
         id: "11",
@@ -96,7 +106,8 @@ export const ProductsData = [
         price: 150,
         brand: "North Face",
         isFeatured: false,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Warm North Face scarf for chilly days."
     },
     {
         id: "12",
@@ -105,7 +116,8 @@ export const ProductsData = [
         price: 80,
         brand: "North Face",
         isFeatured: false,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Cozy North Face beanie for winter."
     },
     {
         id: "13",
@@ -114,7 +126,8 @@ export const ProductsData = [
         price: 250,
         brand: "Adidas",
         isFeatured: false,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Elegant Adidas dress for special occasions."
     },
     {
         id: "14",
@@ -123,7 +136,8 @@ export const ProductsData = [
         price: 180,
         brand: "Puma",
         isFeatured: false,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Comfortable Puma sweatshirt for casual wear."
     },
     {
         id: "15",
@@ -132,7 +146,8 @@ export const ProductsData = [
         price: 120,
         brand: "North Face",
         isFeatured: false,
-        category: "Accessories"
+        category: "Accessories",
+        description: "Warm North Face gloves for winter."
     },
     {
         id: "16",
@@ -141,6 +156,7 @@ export const ProductsData = [
         price: 220,
         brand: "Nike",
         isFeatured: false,
-        category: "Clothing"
+        category: "Clothing",
+        description: "Stylish and cozy Nike hoodie."
     },
 ];

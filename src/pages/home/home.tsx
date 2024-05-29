@@ -1,11 +1,20 @@
 import ProductCard from "../../components/productcard/productcard";
 import { ProductsData } from "../../data/products"
 import { Product } from "../../models/product";
+import Slider from "react-slick";
 
 export default function Home() {
 
-    const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true);
-    const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false);
+    const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true).slice(0, 3);
+    const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false).slice(0, 3);
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1
+    };
 
     const features = [
         {
@@ -46,7 +55,7 @@ export default function Home() {
                     <button>Shop Now</button>
                 </div>
 
-               
+
             </section>
             {/* hero section  */}
 
@@ -66,9 +75,31 @@ export default function Home() {
                 <h2>Featured Products</h2>
                 <p>Summer Collection new Modern Design</p>
                 <div className="pro-container">
-                    {featuredProducts.map((product: Product, index: number) => (
-                        <ProductCard key={index} product={product} />
-                    ))}
+                    <Slider {...settings}>
+                        {/* {featuredProducts.map((product: Product, index: number) => (
+                            <ProductCard key={index} product={product} />
+                        ))} */}
+
+                        <div className="h-[20px] w-[20px]">
+                            <h3 className="text-black">1</h3>
+                        </div>
+                        <div>
+                            <h3>2</h3>
+                        </div>
+                        <div>
+                            <h3>3</h3>
+                        </div>
+                        <div>
+                            <h3>4</h3>
+                        </div>
+                        <div>
+                            <h3>5</h3>
+                        </div>
+                        <div>
+                            <h3>6</h3>
+                        </div>
+                    </Slider>
+
                 </div>
             </section>
             {/* featured product */}

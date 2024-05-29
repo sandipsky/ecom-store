@@ -28,11 +28,14 @@ export default function ProductDetail() {
             <div className="ml-8">
                 <h2 className="mt-2 text-lg text-gray-700">Home/{product.category}</h2>
                 <h1 className="text-3xl font-bold">{product.name}</h1>
+                <h2 className="mt-2 text-lg text-gray-700">{product.brand}</h2>
+
                 <h2 className="mt-2 text-lg text-gray-700">${product.price}</h2>
-                {/* <p className="mt-4 text-gray-800">{product.description}</p> */}
                 <button onClick={() => onAddToCart(product)} className="mt-8 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                     Add to Cart
                 </button>
+                <p className="mt-4 text-gray-800">{product.description}</p>
+
             </div>
         </div>
     );

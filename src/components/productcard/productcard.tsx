@@ -20,10 +20,10 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <div className="px-[12px] py-[10px] shadow-md w-[30%] my-[15px]">
 
-            <Link to={`/product/${product.id}`}> <img src={product.image} alt={product.name} /></Link>
+            <Link to={`/products/${product.id}`}> <img src={product.image} alt={product.name} /></Link>
 
             <span>{product.brand}</span>
-            <Link to={`/product/${product.id}`}><h5>{product.name}</h5></Link>
+            <Link to={`/products/${product.id}`}><h5>{product.name}</h5></Link>
 
             <div className="flex items-center justify-between mt-2">
                 <h4 className="font-[700] text-[#088178]">Rs. {product.price}</h4>

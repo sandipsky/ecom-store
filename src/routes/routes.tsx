@@ -7,6 +7,7 @@ import Register from "../pages/register/register";
 import ProtectedRoute from "./protectedroute";
 import { AuthProvider } from "../auth/authcontext";
 import ProductDetail from "../pages/products/product-detail/product-detail";
+import Checkout from "../pages/checkout/checkout";
 
 export const router = createBrowserRouter([
     {
@@ -16,16 +17,20 @@ export const router = createBrowserRouter([
             { path: "", element: <Home /> },
             {
                 path: "products",
+                element: <Products />
+            },
+            {
+                path: "products/:id",
+                element: <ProductDetail />
+            },
+            {
+                path: "checkout",
                 element: (
                     <ProtectedRoute>
-                        <Products />
+                        <Checkout />
                     </ProtectedRoute>
                 )
             },
-            {
-                path: "product/:id", // Add this route for product details
-                element: <ProductDetail />
-            }
         ],
     },
     {
