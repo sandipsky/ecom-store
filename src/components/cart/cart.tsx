@@ -4,6 +4,7 @@ import { addItem, decreaseQty, removeItem, clearCart } from '../../store/slice/c
 import { CartItem } from '../../models/cart';
 import { RootState } from '../../store/store';
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 interface CartProps {
     cartOpen: boolean;
@@ -69,7 +70,7 @@ export default function Cart(props: CartProps) {
                             <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                             <div className="flex-1 ml-4">
                                 <h3 className="font-semibold">{item.name}</h3>
-                                <p className="text-sm text-gray-500">Price: ${item.price}</p>
+                                <p className="text-sm text-gray-500">Price: Rs. {item.price}</p>
                                 <div className="flex items-center mt-2">
                                     <button onClick={() => handleDecrease(item)} className="text-gray-500 hover:text-black mr-2">
                                         <i className="bx bx-minus"></i>
@@ -81,7 +82,7 @@ export default function Cart(props: CartProps) {
                                 </div>
                             </div>
                             <div className="flex items-center space-x-4">
-                                <p className="font-semibold">${item.price * item.quantity}</p>
+                                <p className="font-semibold">Rs. {item.price * item.quantity}</p>
                                 <button onClick={() => handleRemoveItem(item)} className="text-gray-500 hover:text-red-600">
                                     <i className="bx bx-trash"></i>
 
@@ -95,11 +96,17 @@ export default function Cart(props: CartProps) {
                 <div className="p-4 border-t">
                     <p className="flex justify-between font-semibold">
                         <span>Total:</span>
-                        <span>${totalPrice}</span>
+                        <span>Rs. {totalPrice}</span>
                     </p>
                     <button onClick={handleClearCart} className="w-full mt-4 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">
                         Clear Cart
                     </button>
+                    <Link to={"/checkout"}>
+                        <button onClick={() => props.toggleCart(false)} className="w-full mt-4 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
+                            Checkout
+                        </button>
+                    </Link>
+
                 </div>
             )}
         </div>

@@ -88,24 +88,24 @@ export default function Products() {
 
           <h3 className="font-[800] text-[24px]">Price Range</h3>
           <div className="flex flex-col">
-            <div className="flex items-center">
+            <div className="flex items-center gap-[12px]">
               <span>Min:</span>
               <input
                 type="number"
                 value={priceRange[0]}
                 onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
-                className="ml-2 w-20"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 min="0"
                 max={priceRange[1]}
               />
             </div>
-            <div className="flex items-center mt-2">
+            <div className="flex items-center mt-2 gap-[12px]">
               <span>Max:</span>
               <input
                 type="number"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                className="ml-2 w-20"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 min={priceRange[0]}
                 max="5000"
               />
@@ -125,18 +125,18 @@ export default function Products() {
         </div>
 
         <div className="w-[70%] flex flex-col">
-          <div className="flex">
+          <div className="flex items-center gap-[24px]">
             <input
-              className="w-2/3"
+              className="w-2/3 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
               placeholder="Search"
               value={searchQuery}
               onChange={handleSearchChange}
             />
 
-            <div className="flex w-1/3">
+            <div className="flex w-1/3 items-center gap-[12px]">
               <label>Sort By:</label>
-              <select name="" id="" onChange={handleSortChange}>
+              <select className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" onChange={handleSortChange}>
                 <option selected disabled hidden value="">Select</option>
                 <option value="name">Name</option>
                 <option value="price">Price</option>

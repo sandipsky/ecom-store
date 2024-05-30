@@ -1,12 +1,25 @@
 import Featured from "../../components/featured/featured";
 import { ProductsData } from "../../data/products"
 import { Product } from "../../models/product";
-
+// import '../../components/featured/featured.scss'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
 
     const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true);
     const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false);
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    };
 
     const features = [
         {
@@ -38,15 +51,50 @@ export default function Home() {
     return (
         <>
             {/* hero section  */}
-            <section className="h-[90vh] w-full px-[80px] flex  bg-cyan-50">
-                <div className="flex justify-center flex-col items-start">
-                    <h4>Trade-in-offer</h4>
-                    <h2>Super value deals</h2>
-                    <h1>On all products</h1>
-                    <p>Save more with coupons & upto 70% off! </p>
-                    <button>Shop Now</button>
+            <Slider {...settings}>
+                <div className="h-[90vh] flex items-center bg-cyan-50 ml-[-80px]">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                        <h4>Trade-in-offer</h4>
+                        <h2>Super value deals</h2>
+                        <h1>On all products</h1>
+                        <p>Save more with coupons & upto 70% off! </p>
+                        <button>Shop Now</button>
+                    </div>
+
+                    <div className="w-1/2">
+
+                    </div>
                 </div>
-            </section>
+
+                <div className="h-[90vh] flex items-center bg-red-50 ml-[-80px] ">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                        <h4>Trade-in-offer</h4>
+                        <h2>Super value deals</h2>
+                        <h1>On all products</h1>
+                        <p>Save more with coupons & upto 70% off! </p>
+                        <button>Shop Now</button>
+                    </div>
+
+                    <div className="w-1/2">
+
+                    </div>
+                </div>
+
+                <div className="h-[90vh] flex items-center bg-yellow-50 ml-[-80px] ">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                        <h4>Trade-in-offer</h4>
+                        <h2>Super value deals</h2>
+                        <h1>On all products</h1>
+                        <p>Save more with coupons & upto 70% off! </p>
+                        <button>Shop Now</button>
+                    </div>
+
+                    <div className="w-1/2">
+
+                    </div>
+                </div>
+
+            </Slider>
             {/* hero section  */}
 
             {/* features  */}

@@ -8,7 +8,7 @@ export default function Register() {
     return <Navigate to="/" />;
   }
 
-  function handleLogin() {
+  function handleRegister() {
     const user = {
       username: "sandip",
       password: "asd"
@@ -55,7 +55,7 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            onClick={() => handleLogin()}
+            onClick={() => handleRegister()}
             className="w-full py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Register

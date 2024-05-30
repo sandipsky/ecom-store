@@ -8,17 +8,19 @@
 }
 
 .horizontal-slider {
-  background-color: #000;
   height: 20px;
+  margin: 20px 0; /* Add some spacing above and below the slider */
+  border-radius: 10px; /* Rounded corners for the slider track */
 }
 
 .track {
-  background: #ccc;
+  background: linear-gradient(to right, #ccc, #999); /* Gradient background for the track */
   height: 20px;
+  border-radius: 10px; /* Rounded corners for the track */
 }
 
-
 .track-1 {
-  background: blue;
+  background: linear-gradient(to right, blue, #007bff); /* Gradient background for selected track */
   height: 20px;
+  border-radius: 10px; /* Rounded corners for the selected track */
 }
