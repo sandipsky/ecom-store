@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../auth/authcontext";
 
 export default function Login() {
@@ -37,17 +37,8 @@ export default function Login() {
               placeholder="Password"
             />
           </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="remember-me"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
-            </div>
+          <div className="flex items-center justify-end">
+            
             <div className="text-sm">
               <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot your password?
@@ -64,9 +55,9 @@ export default function Login() {
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
           Don't have an account?{' '}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Sign up
-          </a>
+          <Link to={`/register`} className="font-medium text-indigo-600 hover:text-indigo-500">
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
