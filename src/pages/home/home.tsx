@@ -52,47 +52,39 @@ export default function Home() {
         <>
             {/* hero section  */}
             <Slider {...settings}>
-                <div className="h-[90vh] flex items-center bg-cyan-50 ml-[-80px]">
-                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                <div id="hero1" className="h-[90vh] flex items-center bg-cyan-50 ml-[-80px]">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full px-[80px]">
                         <h4>Trade-in-offer</h4>
                         <h2>Super value deals</h2>
                         <h1>On all products</h1>
                         <p>Save more with coupons & upto 70% off! </p>
                         <button>Shop Now</button>
                     </div>
-
-                    <div className="w-1/2">
-
-                    </div>
                 </div>
 
-                <div className="h-[90vh] flex items-center bg-red-50 ml-[-80px] ">
-                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                <div id="hero2" className="h-[90vh] flex items-center bg-cyan-50 ml-[-80px]">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full px-[80px]">
                         <h4>Trade-in-offer</h4>
                         <h2>Super value deals</h2>
                         <h1>On all products</h1>
                         <p>Save more with coupons & upto 70% off! </p>
                         <button>Shop Now</button>
                     </div>
-
-                    <div className="w-1/2">
-
-                    </div>
                 </div>
 
-                <div className="h-[90vh] flex items-center bg-yellow-50 ml-[-80px] ">
-                    <div className="w-1/2 flex justify-center flex-col items-center h-full">
+                <div id="hero3" className="h-[90vh] flex items-center bg-cyan-50 ml-[-80px]">
+                    <div className="w-1/2 flex justify-center flex-col items-center h-full px-[80px]">
                         <h4>Trade-in-offer</h4>
                         <h2>Super value deals</h2>
                         <h1>On all products</h1>
                         <p>Save more with coupons & upto 70% off! </p>
                         <button>Shop Now</button>
                     </div>
-
-                    <div className="w-1/2">
-
-                    </div>
                 </div>
+
+
+
+
 
             </Slider>
             {/* hero section  */}
