@@ -18,22 +18,16 @@ export default function ProductCard({ product }: ProductCardProps) {
     };
 
     return (
-        <div className="px-[12px] py-[10px] shadow-md w-[30%] my-[15px]">
-
+        <div className="px-[12px] py-[10px] shadow-md w-[400px] my-[15px] border-[1px] rounded-[6px] border-[#f2f2f2]">
             <Link to={`/products/${product.id}`}> <img src={product.image} alt={product.name} /></Link>
-
             <span>{product.brand}</span>
             <Link to={`/products/${product.id}`}><h5>{product.name}</h5></Link>
-
             <div className="flex items-center justify-between mt-2">
                 <h4 className="font-[700] text-[#088178]">Rs. {product.price}</h4>
                 <button onClick={() => onAddToCart(product)} className="bg-[#fddde4] rounded-[4px] text-[#088178] p-[10px] text-[14px]">
                     <i className="bx bx-cart-alt"></i> Add to Cart
                 </button>
             </div>
-
-
-
         </div>
     );
 }

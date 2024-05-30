@@ -1,0 +1,30 @@
+/* Add this to your CSS file */
+.slick-slide {
+    width: 30%;
+}
+
+.slick-list {
+    padding-left: 80px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #333;
+    font-size: 1.5rem;
+
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 2;
+    top: 50%;
+    position: absolute;
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 10px;
+}

@@ -1,20 +1,12 @@
-import ProductCard from "../../components/productcard/productcard";
+import Featured from "../../components/featured/featured";
 import { ProductsData } from "../../data/products"
 import { Product } from "../../models/product";
-import Slider from "react-slick";
+
 
 export default function Home() {
 
-    const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true).slice(0, 3);
-    const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false).slice(0, 3);
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1
-    };
+    const featuredProducts: Product[] = ProductsData.filter(item => item.isFeatured == true);
+    const newProducts: Product[] = ProductsData.filter(item => item.isFeatured == false);
 
     const features = [
         {
@@ -54,8 +46,6 @@ export default function Home() {
                     <p>Save more with coupons & upto 70% off! </p>
                     <button>Shop Now</button>
                 </div>
-
-
             </section>
             {/* hero section  */}
 
@@ -71,91 +61,21 @@ export default function Home() {
             {/* features */}
 
             {/* featured product */}
-            <section id="product1" className="section-p1">
-                <h2>Featured Products</h2>
-                <p>Summer Collection new Modern Design</p>
-                <div className="pro-container">
-                    <Slider {...settings}>
-                        {/* {featuredProducts.map((product: Product, index: number) => (
-                            <ProductCard key={index} product={product} />
-                        ))} */}
-
-                        <div className="h-[20px] w-[20px]">
-                            <h3 className="text-black">1</h3>
-                        </div>
-                        <div>
-                            <h3>2</h3>
-                        </div>
-                        <div>
-                            <h3>3</h3>
-                        </div>
-                        <div>
-                            <h3>4</h3>
-                        </div>
-                        <div>
-                            <h3>5</h3>
-                        </div>
-                        <div>
-                            <h3>6</h3>
-                        </div>
-                    </Slider>
-
-                </div>
-            </section>
+            <Featured products={featuredProducts} name={'Featured Products'} />
             {/* featured product */}
 
-
             {/* banner */}
-            <section id="banner" className="section-m1 ">
-                <h4>Repair Service</h4>
-                <h2>Up to <span>70% off</span> - All t-Shirts & Accesories</h2>
+            <section className="my-[30px] flex flex-col justify-center items-center bg-[#060f1e] w-full h-[40vh]">
+                <h4 className="text-white text-[16px]">Repair Service</h4>
+                <h2 className="text-white text-[30px] py-[10px]">Up to <span>70% off</span> - All t-Shirts & Accesories</h2>
                 <button className="normal">Explore More</button>
             </section>
             {/* banner */}
 
             {/* new arrivals */}
-            <section id="product1" className="section-p1">
-                <h2>New Arrivals</h2>
-                <p>Summer Collection new Modern Design</p>
-                <div className="pro-container">
-                    {newProducts.map((product: Product, index: number) => (
-                        <ProductCard key={index} product={product} />
-                    ))}
-                </div>
-            </section>
+            <Featured products={newProducts} name={'New Arrivals'} />
             {/* new arrivals */}
 
-            {/* banners */}
-            <section id="sm-banner" className="section-p1">
-                <div className="banner-box">
-                    <h4>crazy deals</h4>
-                    <h2>buy 1 get 1 free</h2>
-                    <span>The best classNameic dress is on sale at cara</span>
-                    <button className="white">Learn More</button>
-                </div>
-                <div className="banner-box banner-box2">
-                    <h4>spring/summer</h4>
-                    <h2>upcoming season</h2>
-                    <span>The best classNameic dress is on sale at cara</span>
-                    <button className="white">Collections</button>
-                </div>
-            </section>
-
-            <section id="banner3">
-                <div className="banner-box">
-                    <h2>SEASON SALE</h2>
-                    <h3>Winter Collection -50% OFF</h3>
-                </div>
-                <div className="banner-box banner-box2">
-                    <h2>NEW FOOTWEAR COLLECTION</h2>
-                    <h3>Spring/Summer 2022</h3>
-                </div>
-                <div className="banner-box banner-box3">
-                    <h2>T-SHIRTS</h2>
-                    <h3>New Trendy Prints</h3>
-                </div>
-            </section>
-            {/* banners */}
 
             {/* newsletter */}
             <section id="newsletter" className="section-p1 section-m1 ">
