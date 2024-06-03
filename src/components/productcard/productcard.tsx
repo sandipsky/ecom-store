@@ -18,7 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     };
 
     return (
-        <div className="px-[12px] py-[10px] shadow-md w-[400px] my-[15px] border-[1px] rounded-[6px] border-[#f2f2f2]">
+        <div className="px-[12px] py-[10px] shadow-md w-[320px] my-[15px] border-[1px] rounded-[6px] border-[#f2f2f2]">
             <Link to={`/products/${product.id}`}> <img src={product.image} alt={product.name} /></Link>
             <span>{product.brand}</span>
             <Link to={`/products/${product.id}`}><h5>{product.name}</h5></Link>
