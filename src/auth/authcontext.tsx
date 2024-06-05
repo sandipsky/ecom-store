@@ -46,7 +46,8 @@ export const AuthProvider = ({ children }: Props) => {
         }
     };
 
-    const loginUser = async (formData: User) => {
+    // const loginUser = async (formData: User) => {
+    const loginUser = async () => {
         // try {
         //     const data = await axios.post(api + "/account/login", {
         //         username: formData.username,

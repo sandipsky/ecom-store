@@ -3,7 +3,7 @@ import { RootState } from '../../store/store';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../store/slice/cartslice';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SweetAlert2 from 'react-sweetalert2';
 
 const CheckoutPage = () => {
