@@ -7,7 +7,9 @@ export const ProductsData = [
         brand: "Nike",
         isFeatured: true,
         category: "Clothing",
-        description: "Comfortable and stylish Nike hoodie."
+        description: "Comfortable and stylish Nike hoodie.",
+        status: true,
+        quantity_in_stock: 50
     },
     {
         id: "2",
@@ -17,7 +19,9 @@ export const ProductsData = [
         brand: "Ray-Ban",
         isFeatured: true,
         category: "Accessories",
-        description: "Classic Ray-Ban sunglasses for any occasion."
+        description: "Classic Ray-Ban sunglasses for any occasion.",
+        status: true,
+        quantity_in_stock: 30
     },
     {
         id: "3",
@@ -27,7 +31,9 @@ export const ProductsData = [
         brand: "North Face",
         isFeatured: true,
         category: "Bags",
-        description: "Durable North Face backpack with ample storage."
+        description: "Durable North Face backpack with ample storage.",
+        status: true,
+        quantity_in_stock: 20
     },
     {
         id: "4",
@@ -37,7 +43,9 @@ export const ProductsData = [
         brand: "Nike",
         isFeatured: true,
         category: "Clothing",
-        description: "High-performance Nike shorts for active wear."
+        description: "High-performance Nike shorts for active wear.",
+        status: true,
+        quantity_in_stock: 40
     },
     {
         id: "5",
@@ -47,7 +55,9 @@ export const ProductsData = [
         brand: "Puma",
         isFeatured: true,
         category: "Footwear",
-        description: "Stylish Puma sneakers for everyday use."
+        description: "Stylish Puma sneakers for everyday use.",
+        status: true,
+        quantity_in_stock: 35
     },
     {
         id: "6",
@@ -57,7 +67,9 @@ export const ProductsData = [
         brand: "New Era",
         isFeatured: true,
         category: "Accessories",
-        description: "Trendy New Era cap for a casual look."
+        description: "Trendy New Era cap for a casual look.",
+        status: true,
+        quantity_in_stock: 25
     },
     {
         id: "7",
@@ -67,7 +79,9 @@ export const ProductsData = [
         brand: "Casio",
         isFeatured: true,
         category: "Accessories",
-        description: "Reliable Casio watch with a sleek design."
+        description: "Reliable Casio watch with a sleek design.",
+        status: true,
+        quantity_in_stock: 45
     },
     {
         id: "8",
@@ -77,7 +91,9 @@ export const ProductsData = [
         brand: "North Face",
         isFeatured: true,
         category: "Clothing",
-        description: "Warm and comfortable North Face jacket."
+        description: "Warm and comfortable North Face jacket.",
+        status: true,
+        quantity_in_stock: 15
     },
     {
         id: "9",
@@ -87,7 +103,9 @@ export const ProductsData = [
         brand: "Adidas",
         isFeatured: false,
         category: "Clothing",
-        description: "Classic Adidas T-shirt for everyday wear."
+        description: "Classic Adidas T-shirt for everyday wear.",
+        status: true,
+        quantity_in_stock: 60
     },
     {
         id: "10",
@@ -97,7 +115,9 @@ export const ProductsData = [
         brand: "Levi's",
         isFeatured: false,
         category: "Clothing",
-        description: "Stylish Levi's jeans with a perfect fit."
+        description: "Stylish Levi's jeans with a perfect fit.",
+        status: true,
+        quantity_in_stock: 50
     },
     {
         id: "11",
@@ -107,7 +127,9 @@ export const ProductsData = [
         brand: "North Face",
         isFeatured: false,
         category: "Accessories",
-        description: "Warm North Face scarf for chilly days."
+        description: "Warm North Face scarf for chilly days.",
+        status: true,
+        quantity_in_stock: 70
     },
     {
         id: "12",
@@ -117,7 +139,9 @@ export const ProductsData = [
         brand: "North Face",
         isFeatured: false,
         category: "Accessories",
-        description: "Cozy North Face beanie for winter."
+        description: "Cozy North Face beanie for winter.",
+        status: true,
+        quantity_in_stock: 90
     },
     {
         id: "13",
@@ -127,7 +151,9 @@ export const ProductsData = [
         brand: "Adidas",
         isFeatured: false,
         category: "Clothing",
-        description: "Elegant Adidas dress for special occasions."
+        description: "Elegant Adidas dress for special occasions.",
+        status: true,
+        quantity_in_stock: 10
     },
     {
         id: "14",
@@ -137,7 +163,9 @@ export const ProductsData = [
         brand: "Puma",
         isFeatured: false,
         category: "Clothing",
-        description: "Comfortable Puma sweatshirt for casual wear."
+        description: "Comfortable Puma sweatshirt for casual wear.",
+        status: true,
+        quantity_in_stock: 55
     },
     {
         id: "15",
@@ -147,7 +175,9 @@ export const ProductsData = [
         brand: "North Face",
         isFeatured: false,
         category: "Accessories",
-        description: "Warm North Face gloves for winter."
+        description: "Warm North Face gloves for winter.",
+        status: true,
+        quantity_in_stock: 75
     },
     {
         id: "16",
@@ -157,6 +187,8 @@ export const ProductsData = [
         brand: "Nike",
         isFeatured: false,
         category: "Clothing",
-        description: "Stylish and cozy Nike hoodie."
+        description: "Stylish and cozy Nike hoodie.",
+        status: true,
+        quantity_in_stock: 65
     },
 ];
